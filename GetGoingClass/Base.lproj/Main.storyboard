@@ -126,8 +126,8 @@
                                     <constraint firstAttribute="height" constant="28" id="hd9-KQ-sD8"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="A-Z"/>
+                                    <segment title="Rating"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedObserver:" destination="U1I-B9-IIa" eventType="valueChanged" id="iY6-2g-53X"/>
