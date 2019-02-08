@@ -121,7 +121,6 @@ class SearchViewController: UIViewController {
     func presentSearchResults(places: [PlaceDetails]) {
         guard let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController else { return }
 
-        print("1234")
         
 //        searchResultsViewController.places = places.sorted(by: { $0.rating! > $1.rating! })
         

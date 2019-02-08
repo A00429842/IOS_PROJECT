@@ -24,6 +24,7 @@
 		5DEA834321F9354500D4A772 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */; };
 		5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEA834521F937D200D4A772 /* SearchResultTableViewCell.swift */; };
 		5DEA834821F937D200D4A772 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA834621F937D200D4A772 /* SearchResultTableViewCell.xib */; };
+		7056A1F3220D3A06003284E5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7056A1F2220D3A06003284E5 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		5DEA834521F937D200D4A772 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		5DEA834621F937D200D4A772 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
+		7056A1F2220D3A06003284E5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				5D8399A121EFFE2D0040821A /* SearchViewController.swift */,
 				5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */,
 				5DE95A772208E9F80097DDDB /* FiltersViewController.swift */,
+				7056A1F2220D3A06003284E5 /* DetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */,
 				5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */,
 				5DE95A782208E9F80097DDDB /* FiltersViewController.swift in Sources */,
+				7056A1F3220D3A06003284E5 /* DetailsViewController.swift in Sources */,
 				5DEA834721F937D200D4A772 /* SearchResultTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

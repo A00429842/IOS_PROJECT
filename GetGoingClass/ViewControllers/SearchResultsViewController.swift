@@ -14,6 +14,7 @@ class SearchResultsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var sementedContoler: UISegmentedControl!
     //MARK: - Properties
 
     var places: [PlaceDetails]!
@@ -28,11 +29,21 @@ class SearchResultsViewController: UIViewController {
 
         let nib = UINib(nibName: "SearchResultTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SearchResultTableViewCell")
-        places = places.sorted(by: { $0.rating! > $1.rating! })
-        tableView.reloadData()
     }
     
 
+    @IBAction func segmentedObserver(_ sender: UISegmentedControl) {
+
+        if(sender.selectedSegmentIndex == 0)
+        {
+            places = places.sorted(by: { $0.name! < $1.name! })
+        }else if(sender.selectedSegmentIndex == 1)
+        {
+            places = places.sorted(by: { $0.rating! > $1.rating! })
+        }
+        tableView.reloadData()
+
+    }
     /*
     // MARK: - Navigation
 
@@ -71,26 +82,25 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.iconImageView.image = UIImage(data: imageData)
         return cell
     }
+    
+    func presentDetails(place: PlaceDetails) {
+        guard let detailsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
+        
+        detailsViewController.place = place
+        //        searchResultsViewController.places = places.sorted(by: { $0.rating! > $1.rating! })
+        
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(detailsViewController, animated: true)
+        }
+        
+
+    }
+
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row was selected at \(indexPath.section) \(indexPath.row)")
         let place = places[indexPath.row]
-        let placeId = place.placeId
-        print(placeId!)
-        GooglePlacesAPI.requestPlaceDetail(placeId!) { (status, json) in
-            print(json ?? "")
-            DispatchQueue.main.async {
-            }
-            guard let jsonObj = json else { return }
-            if let result = jsonObj["result"] as?
-                [String: Any]{
-                print(result["website"])
-                print(result["formatted_phone_number"])
+        presentDetails(place: place)
 
-            }
-            
-
-            
-        }
     }
 }
