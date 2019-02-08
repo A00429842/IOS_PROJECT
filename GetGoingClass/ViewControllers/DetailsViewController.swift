@@ -52,9 +52,9 @@ class DetailsViewController: UIViewController {
                 guard let jsonObj = json else { return }
                 if let result = jsonObj["result"] as?
                     [String: Any]{
-                    let websiteText = result["website"] as! String
-                    let phoneText = result["formatted_phone_number"] as! String
-                    self.changeLabelText(website:websiteText, phone:phoneText)
+                    let websiteText = result["website"] as? String
+                    let phoneText = result["formatted_phone_number"] as? String
+                    self.changeLabelText(website:websiteText ?? "", phone:phoneText ?? "")
                 }
             }
 

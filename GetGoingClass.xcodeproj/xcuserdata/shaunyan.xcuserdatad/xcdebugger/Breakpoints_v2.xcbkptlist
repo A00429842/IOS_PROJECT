@@ -263,13 +263,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GetGoingClass/ViewControllers/DetailsViewController.swift"
-            timestampString = "571306131.476764"
+            timestampString = "571356949.949592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "showDetail(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -311,13 +311,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GetGoingClass/ViewControllers/DetailsViewController.swift"
-            timestampString = "571306131.477815"
+            timestampString = "571356949.983839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "hideActivityIndicator()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
