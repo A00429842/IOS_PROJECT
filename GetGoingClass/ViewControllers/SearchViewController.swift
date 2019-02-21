@@ -122,9 +122,7 @@ class SearchViewController: UIViewController {
         guard let searchResultsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsViewController") as? SearchResultsViewController else { return }
 
         
-//        searchResultsViewController.places = places.sorted(by: { $0.rating! > $1.rating! })
-        
-        searchResultsViewController.places = places.sorted(by: { $0.name! < $1.name! })
+        searchResultsViewController.places = places
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(searchResultsViewController, animated: true)
         }

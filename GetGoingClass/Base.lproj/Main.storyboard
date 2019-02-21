@@ -148,7 +148,7 @@
                         <viewLayoutGuide key="safeArea" id="WqP-tV-QAA"/>
                     </view>
                     <connections>
-                        <outlet property="sementedContoler" destination="gVe-vJ-TB0" id="fuf-j1-zPA"/>
+                        <outlet property="segmentedControl" destination="gVe-vJ-TB0" id="bj2-Td-hm0"/>
                         <outlet property="tableView" destination="Im8-o9-GGu" id="szj-pt-3oM"/>
                     </connections>
                 </viewController>

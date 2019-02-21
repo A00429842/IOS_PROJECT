@@ -14,7 +14,8 @@ class SearchResultsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var sementedContoler: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     //MARK: - Properties
 
     var places: [PlaceDetails]!
@@ -29,17 +30,21 @@ class SearchResultsViewController: UIViewController {
 
         let nib = UINib(nibName: "SearchResultTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SearchResultTableViewCell")
+        updateSorting()
     }
     
 
     @IBAction func segmentedObserver(_ sender: UISegmentedControl) {
-
-        if(sender.selectedSegmentIndex == 0)
+        updateSorting()
+    }
+    
+    private func updateSorting() {
+        if(segmentedControl.selectedSegmentIndex == 0)
         {
-            places = places.sorted(by: { $0.name! < $1.name! })
-        }else if(sender.selectedSegmentIndex == 1)
+            places = places.sorted(by: { $0.name ?? "" < $1.name ?? "" })
+        }else if(segmentedControl.selectedSegmentIndex == 1)
         {
-            places = places.sorted(by: { $0.rating! > $1.rating! })
+            places = places.sorted(by: { $0.rating ?? 0.0 > $1.rating ?? 0.0 })
         }
         tableView.reloadData()
 
@@ -83,11 +88,11 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    
     func presentDetails(place: PlaceDetails) {
         guard let detailsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
         
         detailsViewController.place = place
-        //        searchResultsViewController.places = places.sorted(by: { $0.rating! > $1.rating! })
         
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(detailsViewController, animated: true)

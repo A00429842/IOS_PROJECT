@@ -22,10 +22,9 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var websiteLabel: UILabel!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         activeIndicator.isHidden = true
         placeLabel.text = place.name
-        super.viewDidLoad()
-        
     }
     
     func showActivityIndicator() {
@@ -42,22 +41,25 @@ class DetailsViewController: UIViewController {
     
     @IBAction func showDetail(_ sender: UIButton) {
         
-        let placeId = place.placeId
-        print(placeId!)
-        showActivityIndicator()
-        GooglePlacesAPI.requestPlaceDetail(placeId!) { (status, json) in
-            print(json ?? "")
-            DispatchQueue.main.async {
-                self.hideActivityIndicator()
-                guard let jsonObj = json else { return }
-                if let result = jsonObj["result"] as?
-                    [String: Any]{
-                    let websiteText = result["website"] as? String
-                    let phoneText = result["formatted_phone_number"] as? String
-                    self.changeLabelText(website:websiteText ?? "", phone:phoneText ?? "")
+        if let placeId = place.placeId{
+            showActivityIndicator()
+            GooglePlacesAPI.requestPlaceDetail(placeId) { (status, json) in
+                print(json ?? "")
+                DispatchQueue.main.async {
+                    self.hideActivityIndicator()
+                    guard let jsonObj = json else { return }
+                    if let result = jsonObj["result"] as?
+                        [String: Any]{
+                        let websiteText = result["website"] as? String
+                        let phoneText = result["formatted_phone_number"] as? String
+                        self.changeLabelText(website:websiteText ?? "", phone:phoneText ?? "")
+                    }
                 }
-            }
 
+            }
+        }else {
+            self.changeLabelText(website: "", phone: "")
+            print("placeId is not existed")
         }
         
         
