@@ -12,6 +12,7 @@ class SearchResultsViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var mapViewButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -34,6 +35,14 @@ class SearchResultsViewController: UIViewController {
     }
     
 
+    
+    @IBAction func showMapPreview(_ sender: UIBarButtonItem) {
+        guard let mapPreviewViewController = UIStoryboard(name: "Mapview", bundle: nil).instantiateViewController(withIdentifier: "MapPreviewViewController") as? MapPreviewViewController else{ return }
+        
+        mapPreviewViewController.places = places
+        present(mapPreviewViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func segmentedObserver(_ sender: UISegmentedControl) {
         updateSorting()
     }

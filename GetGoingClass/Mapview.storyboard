@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r0L-ib-IPk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map Preview-->
+        <scene sceneID="Zeo-So-cVm">
+            <objects>
+                <viewController storyboardIdentifier="MapPreviewViewController" title="Map Preview" id="r0L-ib-IPk" customClass="MapPreviewViewController" customModule="GetGoingClass" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TsP-9J-dDw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNK-Jd-mwq">
+                                <rect key="frame" x="0.0" y="40" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="iyJ-sy-xYF" userLabel="Map Preview">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt;&lt; Table view" id="qwr-zT-59c">
+                                            <connections>
+                                                <action selector="backButtonAction:" destination="r0L-ib-IPk" id="lww-yU-Kls"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Map view" id="baq-lO-Nk4">
+                                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0e1-pb-2sG">
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HNK-Jd-mwq" firstAttribute="top" secondItem="qSX-Dq-P2q" secondAttribute="top" constant="20" id="7kS-iZ-cac"/>
+                            <constraint firstItem="0e1-pb-2sG" firstAttribute="top" secondItem="HNK-Jd-mwq" secondAttribute="bottom" id="Pml-fw-UjJ"/>
+                            <constraint firstItem="HNK-Jd-mwq" firstAttribute="leading" secondItem="qSX-Dq-P2q" secondAttribute="leading" id="cnL-UA-CZe"/>
+                            <constraint firstItem="qSX-Dq-P2q" firstAttribute="bottom" secondItem="0e1-pb-2sG" secondAttribute="bottom" id="jDj-HL-TI6"/>
+                            <constraint firstItem="0e1-pb-2sG" firstAttribute="leading" secondItem="qSX-Dq-P2q" secondAttribute="leading" id="uqY-fl-YB9"/>
+                            <constraint firstItem="HNK-Jd-mwq" firstAttribute="trailing" secondItem="qSX-Dq-P2q" secondAttribute="trailing" id="xbC-55-3XR"/>
+                            <constraint firstItem="qSX-Dq-P2q" firstAttribute="trailing" secondItem="0e1-pb-2sG" secondAttribute="trailing" id="yuR-QT-qxc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qSX-Dq-P2q"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="0e1-pb-2sG" id="B2q-Ke-f5q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCt-Gb-SoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="-19.340329835082461"/>
+        </scene>
+    </scenes>
+</document>
