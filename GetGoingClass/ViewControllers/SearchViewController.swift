@@ -38,15 +38,19 @@ class SearchViewController: UIViewController {
         let radiusSavedValue = UserDefaults.standard.object(forKey: "radiusValue") as? Float
         let rankbySavedValue = UserDefaults.standard.object(forKey: "rankbyText") as? String
         let opennowSavedValue = UserDefaults.standard.object(forKey: "opennow") as? Bool
-
-        if radiusSavedValue != Float(Constants.defaultRadius) || opennowSavedValue != Constants.defaultOpennow || rankbySavedValue != Constants.defaultRankby{
-            print(radiusSavedValue)
-            print(opennowSavedValue)
-            print(rankbySavedValue)
-            filterButton.setImage(UIImage(named: "filters"), for: .normal)
+        if radiusSavedValue != nil && rankbySavedValue != nil && opennowSavedValue != nil{
+            if radiusSavedValue != Float(Constants.defaultRadius) || opennowSavedValue != Constants.defaultOpennow || rankbySavedValue != Constants.defaultRankby{
+//                print(radiusSavedValue)
+//                print(opennowSavedValue)
+//                print(rankbySavedValue)
+                filterButton.setImage(UIImage(named: "filters"), for: .normal)
+            }else{
+                filterButton.setImage(UIImage(named: "filtersDefault"), for: .normal)
+            }
         }else{
             filterButton.setImage(UIImage(named: "filtersDefault"), for: .normal)
         }
+        
         
     }
 
@@ -84,6 +88,8 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("enter prepare")
         super.prepare(for: segue, sender: sender)
+        let vc = segue.destination as! FiltersViewController
+        vc.delegate = self
         print("leave prepare")
     }
     
@@ -201,7 +207,6 @@ extension SearchViewController: FiltersViewControllerDelegate {
         raduisValue = raduis
         rankbyValue = rankby
         opennowValue = opennow
-        print("here")
         updateFiltersImage()
     }
 }
