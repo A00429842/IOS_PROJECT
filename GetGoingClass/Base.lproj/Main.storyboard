@@ -89,6 +89,7 @@
                     <navigationItem key="navigationItem" id="Qdc-2y-Ysw"/>
                     <connections>
                         <outlet property="activityIndicator" destination="lFI-uD-B0z" id="n3f-hv-uWK"/>
+                        <outlet property="filterButton" destination="ic9-pM-O8s" id="lNn-Qq-PKW"/>
                         <outlet property="searchButton" destination="Lcl-40-uQl" id="WnI-lb-5Xz"/>
                         <outlet property="searchTextField" destination="lib-wf-Mmo" id="rVd-XZ-b6s"/>
                         <outlet property="segmentControl" destination="O56-5M-kdx" id="THf-fU-292"/>

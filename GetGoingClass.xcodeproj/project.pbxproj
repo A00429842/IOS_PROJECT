@@ -27,6 +27,7 @@
 		7015804222204ADF004A4ACA /* MapPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7015804122204ADF004A4ACA /* MapPreviewViewController.swift */; };
 		701580442220BB87004A4ACA /* Mapview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701580432220BB87004A4ACA /* Mapview.storyboard */; };
 		7056A1F3220D3A06003284E5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7056A1F2220D3A06003284E5 /* DetailsViewController.swift */; };
+		70CFF7A42223C6D6000950A5 /* FiltersViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CFF7A32223C6D6000950A5 /* FiltersViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		7015804122204ADF004A4ACA /* MapPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewViewController.swift; sourceTree = "<group>"; };
 		701580432220BB87004A4ACA /* Mapview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mapview.storyboard; sourceTree = "<group>"; };
 		7056A1F2220D3A06003284E5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		70CFF7A32223C6D6000950A5 /* FiltersViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				5DEA834421F9377C00D4A772 /* Cells */,
 				5D8399A121EFFE2D0040821A /* SearchViewController.swift */,
 				5DEA834221F9354500D4A772 /* SearchResultsViewController.swift */,
+				70CFF7A32223C6D6000950A5 /* FiltersViewControllerDelegate.swift */,
 				5DE95A772208E9F80097DDDB /* FiltersViewController.swift */,
 				7056A1F2220D3A06003284E5 /* DetailsViewController.swift */,
 				7015804122204ADF004A4ACA /* MapPreviewViewController.swift */,
@@ -247,6 +250,7 @@
 				5D8399C521F689050040821A /* NetworkingLayer.swift in Sources */,
 				5D83998F21EFE1D90040821A /* AppDelegate.swift in Sources */,
 				5D2F88982202606E0040F2D5 /* LocationService.swift in Sources */,
+				70CFF7A42223C6D6000950A5 /* FiltersViewControllerDelegate.swift in Sources */,
 				5D8399C221F688330040821A /* Constants.swift in Sources */,
 				5D8399C721F691F80040821A /* GooglePlacesAPI.swift in Sources */,
 				5D2F889321FFBE930040F2D5 /* RatingControl.swift in Sources */,

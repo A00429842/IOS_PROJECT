@@ -20,4 +20,9 @@ class Constants {
 
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PlaceDetails")
+    
+    static let defaultRadius = 10000.0
+    static let defaultRankby = "prominence"
+    /*false means the opennow button is not turned on*/
+    static let defaultOpennow = false
 }

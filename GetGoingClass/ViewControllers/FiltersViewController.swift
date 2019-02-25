@@ -7,21 +7,11 @@
 //
 
 import UIKit
-
-enum RankBy {
-    case prominence, distance
-
-    func description() -> String {
-        switch self {
-        case .distance:
-            return String(describing: self).capitalized
-        case .prominence:
-            return String(describing: self).capitalized
-        }
-    }
-}
+import Foundation
 
 class FiltersViewController: UIViewController {
+    
+    var delegate: FiltersViewControllerDelegate?
     // MARK: - IBOutlets
 
     @IBOutlet weak var radiusSlider: UISlider!
@@ -30,9 +20,14 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var rankBySelectedLabel: UILabel!
 
+    @IBOutlet weak var toolBar: UIToolbar!
     // MARK: - Properties
 
-    var rankByDictionary: [RankBy] = [.prominence, .distance]
+    var rankByDictionary: [String] = ["prominence", "distance"]
+    
+    var selected: String {
+        return UserDefaults.standard.string(forKey: "selected") ?? ""
+    }
 
     // MARK: - View Controller Lifecycle
 
@@ -40,37 +35,72 @@ class FiltersViewController: UIViewController {
         super.viewDidLoad()
 
         pickerView.isHidden = true
+        toolBar.isHidden = true
         pickerView.delegate = self
         pickerView.dataSource = self
         rankByLabel.isUserInteractionEnabled = true
+        
+        if let row = rankByDictionary.index(of:selected) {
+            pickerView.selectRow(row, inComponent: 0, animated: false)
+        }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rankByLabelTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         rankByLabel.addGestureRecognizer(tapGestureRecognizer)
-        rankBySelectedLabel.text = rankByDictionary.first?.description()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44.0)
-        let toolBar = UIToolbar(frame: frame)
-        toolBar.sizeToFit()
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.hidePicker))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolBar.setItems([flexibleSpace, doneItem], animated: true)
-        pickerView.addSubview(toolBar)
-        pickerView.bringSubviewToFront(toolBar)
-        pickerView.isUserInteractionEnabled = true
-    }
+        rankBySelectedLabel.text = rankByDictionary.first
+        if let radiusValue = UserDefaults.standard.object(forKey: "radiusValue") {
+            radiusSlider.value = radiusValue as? Float ?? Float(Constants.defaultRadius)
+        } else {
+            radiusSlider.value = Float(Constants.defaultRadius)
+        }
+        if let rankbyText = UserDefaults.standard.object(forKey: "rankbyText") {
+            rankBySelectedLabel.text = rankbyText as? String ?? Constants.defaultRankby
+        }
+        
+        let opennow = UserDefaults.standard.object(forKey: "opennow")
+        isOpenNow.isOn = opennow as? Bool ?? Constants.defaultOpennow
+        
 
+        pickerView.isUserInteractionEnabled = true
+        
+    }
+    
+
+    @IBAction func resetClick(_ sender: UIButton) {
+        radiusSlider.value = Float(Constants.defaultRadius)
+        rankBySelectedLabel.text = Constants.defaultRankby
+        isOpenNow.isOn = Constants.defaultOpennow
+        UserDefaults.standard.removeObject(forKey: "radiusValue")
+        UserDefaults.standard.removeObject(forKey: "rankbyText")
+        UserDefaults.standard.removeObject(forKey: "opennow")
+
+    }
+    
+    @IBAction func saveClick(_ sender: UIBarButtonItem) {
+        UserDefaults.standard.set(radiusSlider.value,forKey: "radiusValue")
+        UserDefaults.standard.set(rankBySelectedLabel.text, forKey:
+        "rankbyText")
+        UserDefaults.standard.set(rankBySelectedLabel.text, forKey: "selected")
+        UserDefaults.standard.set(isOpenNow.isOn, forKey:"opennow")
+        
+    }
     // MARK: - IBActions
 
     @objc func rankByLabelTapped() {
         print("label was tapped")
         pickerView.isHidden = !pickerView.isHidden
+        toolBar.isHidden = !toolBar.isHidden
     }
 
-    @objc func hidePicker() {
+    
+    @IBAction func doneClick(_ sender: UIBarButtonItem) {
         print("done was tapped")
         pickerView.isHidden = true
+        toolBar.isHidden = true
     }
+    
 
     @IBAction func closeButtonAction(_ sender: UIBarButtonItem) {
+        
         dismiss(animated: true, completion: nil)
     }
 
@@ -91,10 +121,13 @@ class FiltersViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.filterResponse(raduis: radiusSlider.value, rankby: rankBySelectedLabel.text ?? Constants.defaultRankby, opennow: isOpenNow.isOn)
+    }
 }
 
 extension FiltersViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -104,10 +137,13 @@ extension FiltersViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return rankByDictionary[row].description()
+        return rankByDictionary[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        rankBySelectedLabel.text = rankByDictionary[row].description()
+        rankBySelectedLabel.text = rankByDictionary[row]
     }
+    
 }
+
+
