@@ -47,15 +47,12 @@ class FiltersViewController: UIViewController {
         tapGestureRecognizer.numberOfTapsRequired = 1
         rankByLabel.addGestureRecognizer(tapGestureRecognizer)
         rankBySelectedLabel.text = rankByDictionary.first
-        if let radiusValue = UserDefaults.standard.object(forKey: "radiusValue") {
-            radiusSlider.value = radiusValue as? Float ?? Float(Constants.defaultRadius)
-        } else {
-            radiusSlider.value = Float(Constants.defaultRadius)
-        }
-        if let rankbyText = UserDefaults.standard.object(forKey: "rankbyText") {
-            rankBySelectedLabel.text = rankbyText as? String ?? Constants.defaultRankby
-        }
+        let radiusValue = UserDefaults.standard.object(forKey: "radiusValue")
+        radiusSlider.value = radiusValue as? Float ?? Float(Constants.defaultRadius)
         
+        let rankbyText = UserDefaults.standard.object(forKey: "rankbyText")
+        rankBySelectedLabel.text = rankbyText as? String ?? Constants.defaultRankby
+    
         let opennow = UserDefaults.standard.object(forKey: "opennow")
         isOpenNow.isOn = opennow as? Bool ?? Constants.defaultOpennow
         
